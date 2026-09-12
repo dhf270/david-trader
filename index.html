@@ -1,1 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>David Trader | David Enterprises</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">D</div>
+            <div>
+                <h2>DAVID TRADER</h2>
+                <span>David Enterprises</span>
+            </div>
+        </div>
+
+        <nav>
+            <button class="nav-item active" data-page="home">
+                🏠 <span>Home</span>
+            </button>
+
+            <button class="nav-item" data-page="fast">
+                ⚡ <span>Fast Trader</span>
+            </button>
+
+            <button class="nav-item" data-page="bulk">
+                📦 <span>Bulk Trading</span>
+            </button>
+
+            <button class="nav-item" data-page="manual">
+                ✋ <span>Manual Trading</span>
+            </button>
+
+            <button class="nav-item" data-page="history">
+                📜 <span>History</span>
+            </button>
+
+            <button class="nav-item" data-page="settings">
+                ⚙️ <span>Settings</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <span>David Enterprises</span>
+            <small>Trading Platform v1.0</small>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN AREA -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+            <div class="page-title">
+                <h1 id="pageTitle">Dashboard</h1>
+                <span>Trading control center</span>
+            </div>
+
+            <div class="connection-status">
+                <span class="status-dot"></span>
+                <span id="connectionText">Not Connected</span>
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+        <section class="content">
+
+
+            <!-- HOME PAGE -->
+            <div class="page active-page" id="home">
+
+                <div class="welcome">
+                    <div>
+                        <span class="eyebrow">WELCOME BACK</span>
+                        <h2>David Trader</h2>
+                        <p>Your trading command center.</p>
+                    </div>
+
+                    <button class="connect-btn" id="connectBtn">
+                        🔌 Connect Deriv
+                    </button>
+                </div>
+
+
+                <!-- ACCOUNT CARDS -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <span>Account Balance</span>
+                        <strong id="balance">$0.00</strong>
+                        <small>Demo / Not Connected</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Equity</span>
+                        <strong id="equity">$0.00</strong>
+                        <small>Waiting for account</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Open Trades</span>
+                        <strong id="openTrades">0</strong>
+                        <small>Currently active</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Today's P/L</span>
+                        <strong id="profit">$0.00</strong>
+                        <small>Daily performance</small>
+                    </div>
+
+                </div>
+
+
+                <!-- TRADING SECTION -->
+                <div class="section-header">
+                    <div>
+                        <h3>Trading Tools</h3>
+                        <p>Choose how you want to trade.</p>
+                    </div>
+                </div>
+
+
+                <div class="tools-grid">
+
+                    <div class="tool-card">
+                        <div class="tool-icon">⚡</div>
+                        <h3>Fast Trader</h3>
+                        <p>Quickly prepare a trade using predefined settings.</p>
+                        <button onclick="openPage('fast')">
+                            Open Fast Trader →
+                        </button>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">📦</div>
+                        <h3>Bulk Trading</h3>
+                        <p>Prepare multiple trades from one control panel.</p>
+                        <button onclick="openPage('bulk')">
+                            Open Bulk Trading →
+                        </button>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">✋</div>
+                        <h3>Manual Trading</h3>
+                        <p>Manually configure your trading parameters.</p>
+                        <button onclick="openPage('manual')">
+                            Open Manual Trading →
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- MARKET OVERVIEW -->
+                <div class="section-header">
+                    <div>
+                        <h3>Market Overview</h3>
+                        <p>Live market data will appear here after API integration.</p>
+                    </div>
+                </div>
+
+                <div class="market-card">
+
+                    <div class="market-row">
+                        <span>Symbol</span>
+                        <span>Price</span>
+                        <span>Change</span>
+                    </div>
+
+                    <div class="market-row">
+                        <strong>Volatility 75</strong>
+                        <span>--</span>
+                        <span class="neutral">--</span>
+                    </div>
+
+                    <div class="market-row">
+                        <strong>Volatility 100</strong>
+                        <span>--</span>
+                        <span class="neutral">--</span>
+                    </div>
+
+                    <div class="market-row">
+                        <strong>Volatility 50</strong>
+                        <span>--</span>
+                        <span class="neutral">--</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAST TRADER -->
+            <div class="page" id="fast">
+
+                <div class="page-heading">
+                    <span class="eyebrow">TRADING MODE</span>
+                    <h2>⚡ Fast Trader</h2>
+                    <p>Quick trade configuration.</p>
+                </div>
+
+                <div class="trading-panel">
+
+                    <label>Market</label>
+
+                    <select id="fastMarket">
+                        <option>Volatility 75 Index</option>
+                        <option>Volatility 100 Index</option>
+                        <option>Volatility 50 Index</option>
+                    </select>
+
+
+                    <label>Direction</label>
+
+                    <div class="direction-buttons">
+                        <button class="direction buy">UP / BUY</button>
+                        <button class="direction sell">DOWN / SELL</button>
+                    </div>
+
+
+                    <label>Stake</label>
+
+                    <input type="number" value="1" min="0.35" step="0.01">
+
+
+                    <label>Take Profit</label>
+
+                    <input type="number" placeholder="Optional">
+
+
+                    <label>Stop Loss</label>
+
+                    <input type="number" placeholder="Optional">
+
+
+                    <button class="primary-btn">
+                        ⚡ Prepare Trade
+                    </button>
+
+                    <div class="demo-warning">
+                        ⚠️ Demo interface — real trading is not connected yet.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BULK TRADING -->
+            <div class="page" id="bulk">
+
+                <div class="page-heading">
+                    <span class="eyebrow">MULTI TRADE</span>
+                    <h2>📦 Bulk Trading</h2>
+                    <p>Configure multiple trades from one interface.</p>
+                </div>
+
+                <div class="trading-panel">
+
+                    <label>Market</label>
+
+                    <select>
+                        <option>Volatility 75 Index</option>
+                        <option>Volatility 100 Index</option>
+                        <option>Volatility 50 Index</option>
+                    </select>
+
+
+                    <label>Direction</label>
+
+                    <div class="direction-buttons">
+                        <button class="direction buy">UP / BUY</button>
+                        <button class="direction sell">DOWN / SELL</button>
+                    </div>
+
+
+                    <label>Number of Trades</label>
+
+                    <input type="number" value="5" min="1" max="100">
+
+
+                    <label>Stake Per Trade</label>
+
+                    <input type="number" value="1" min="0.35" step="0.01">
+
+
+                    <button class="primary-btn">
+                        📦 Prepare Bulk Trades
+                    </button>
+
+                    <div class="demo-warning">
+                        ⚠️ Demo interface — no real orders will be sent.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MANUAL TRADING -->
+            <div class="page" id="manual">
+
+                <div class="page-heading">
+                    <span class="eyebrow">MANUAL MODE</span>
+                    <h2>✋ Manual Trading</h2>
+                    <p>Configure your trade manually.</p>
+                </div>
+
+                <div class="trading-panel">
+
+                    <label>Symbol</label>
+
+                    <input type="text" value="Volatility 75 Index">
+
+
+                    <label>Contract Type</label>
+
+                    <select>
+                        <option>Call / Up</option>
+                        <option>Put / Down</option>
+                    </select>
+
+
+                    <label>Stake</label>
+
+                    <input type="number" value="1" min="0.35" step="0.01">
+
+
+                    <label>Duration</label>
+
+                    <input type="number" value="1" min="1">
+
+
+                    <button class="primary-btn">
+                        ✋ Prepare Manual Trade
+                    </button>
+
+                    <div class="demo-warning">
+                        ⚠️ Demo interface — real trading is not connected yet.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HISTORY -->
+            <div class="page" id="history">
+
+                <div class="page-heading">
+                    <span class="eyebrow">ACCOUNT ACTIVITY</span>
+                    <h2>📜 Trade History</h2>
+                    <p>Your completed trades will appear here.</p>
+                </div>
+
+                <div class="history-card">
+
+                    <div class="empty-state">
+                        <div>📊</div>
+                        <h3>No trades yet</h3>
+                        <p>Connect your Deriv account to display trade history.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SETTINGS -->
+            <div class="page" id="settings">
+
+                <div class="page-heading">
+                    <span class="eyebrow">PREFERENCES</span>
+                    <h2>⚙️ Settings</h2>
+                    <p>Customize your trading dashboard.</p>
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="setting-row">
+                        <div>
+                            <strong>Dark Interface</strong>
+                            <p>Use the dark trading interface.</p>
+                        </div>
+
+                        <div class="toggle active"></div>
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <strong>Confirm Trades</strong>
+                            <p>Ask for confirmation before preparing an order.</p>
+                        </div>
+
+                        <div class="toggle active"></div>
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <strong>Demo Mode</strong>
+                            <p>Prevent real trading while testing the interface.</p>
+                        </div>
+
+                        <div class="toggle active"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+              </html>
